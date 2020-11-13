@@ -1,0 +1,15 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+task_list:
+    path: /task_list
+    controller: App\Controller\DefaultController::taskList
+add_task:
+    path: /add_task
+    controller: App\Controller\DefaultController::addTask
+edit_task:
+    path: /edit_task
+    controller: App\Controller\DefaultController::editTask
+delete_task:
+    path: /delete_task
+    controller: App\Controller\DefaultController::deleteTask

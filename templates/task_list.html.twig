@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+    <div class="columns">
+        <div class="column">
+            <form id="form_task" action="" method="post">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="name" class="h4">Task Name</label><br>
+                        <input type="text" class="form-control" id="task_name" placeholder="Enter task name here" required>
+                    </div>
+                    <a href="javascript:void(0)" id="add_task">Add task</a>
+                </div>
+            </form>
+        </div>
+        <div class="column">
+            <div id="tasks_list">
+                {% include "tasks.html.twig" %}
+            </div>
+        </div>
+        <div id="edit_form" style="display: none;">
+            <form id="form_task" action="" method="post">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control edited_task_name" value="" id="" required>
+                    </div>
+                    <a href="javascript:void(0)" id="edit_task">Save</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script language="JavaScript">
+        $(document).ready(function () {
+           $('#add_task').on('click', function (event){
+              var task_name = $('#task_name').val();
+              if(task_name === '') {
+                  alert('Please enter Task Name');
+                  return false;
+              } else {
+                  addTask(task_name);
+                  $('#task_name').val('');
+              }
+           });
+            $('#edit_task').on('click', function (event){
+                var task_name = $('.edited_task_name').val();
+                if(task_name === '') {
+                    alert('Please enter Task Name');
+                    return false;
+                } else {
+                    editTask();
+                    $('#task_name').val('');
+                    $('#edit_form').hide();
+                }
+            });
+
+
+        });
+    </script>
+    <script src="/assets/js/task.js" type="text/javascript"></script>
+{% endblock %}

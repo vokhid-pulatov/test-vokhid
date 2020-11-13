@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+        <div class="columns">
+            <div class="column">
+                <h3 class="title is-3 has-text-centered">Environment</h3>
+                <hr>
+                <div class="content">
+                    <ul>
+                        <li><?= apache_get_version(); ?></li>
+                        <li>PHP <?= phpversion(); ?></li>
+                        <li>
+                            <?php
+                                    $link = mysqli_connect("localhost", "root", null, 'test-vokhid');
+                                        /* check connection */
+                                    if (mysqli_connect_errno()) {
+                                        printf("MySQL connecttion failed: %s", mysqli_connect_error());
+                                    } else {
+                                        /* print server version */
+                                        printf("MySQL Server %s", mysqli_get_server_info($link));
+                                    }
+                                    /* close connection */
+                                    mysqli_close($link);
+                                    ?>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="title is-3 has-text-centered">Quick Links</h3>
+                <hr>
+                <div class="content">
+                    <ul>
+                        <li><a href="http://localhost/phpinfo.php">phpinfo()</a></li>
+                        <li><a href="http://localhost/test_db.php">Test DB Connection</a></li>
+                        <li><a href="http://test.local.com/task_list">Task List Page</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+<ul>
+    {% for task in tasks %}
+        <li id="task-{{ task.id }}">
+            {{ task.task }}
+            <a onclick="showEditForm('{{ task.task }}', '{{ task.id }}');" >edit</a>
+            <a onclick="deleteTask('{{ task.id }}');" >delete</a>
+        </li>
+    {% endfor %}
+</ul>
