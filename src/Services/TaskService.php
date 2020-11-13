@@ -13,22 +13,6 @@ class TaskService
     {
         $this->_container = $container;
         $this->_em = $em;
-        //$this->taskRepository = $this->_em->getRepository('App\Repository\TaskRepository');
-    }
-
-    /**
-     *
-     * @return object[]
-     */
-    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
-    {
-        $tasks = $this->findByQuery($criteria, $orderBy, $limit, $offset)->getResult();
-//        $blogArray = [];
-//        foreach ($blogs as $blog) {
-//            $blogArray[] = $this->transform($blog);
-//        }
-
-        return $tasks;
     }
 
     public function getAllTasks()
