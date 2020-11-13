@@ -31,7 +31,7 @@ class TaskService
     {
         $task = new Task();
         $task->setTask($task_name);
-        $task->getIsDone();
+        $task->getIsDone(1);
         $task->setCreated(new \DateTime());
         $task->setModified(new \DateTime());
         $this->_em->persist($task);
